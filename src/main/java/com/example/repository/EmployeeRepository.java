@@ -92,11 +92,11 @@ public class EmployeeRepository {
                  ,image = :image
                  ,gender = :gender
                  ,hire_date = :hireDate
-                 ,mail_address = mailAddress
+                 ,mail_address = :mailAddress
                  ,zip_code = :zipCode
                  ,address = :address
                  ,telephone = :telephone
-                 ,salary = salary
+                 ,salary = :salary
                  ,characteristics = :characteristics
                  ,dependents_count = :dependentsCount
                  WHERE id = :id

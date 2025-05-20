@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -60,6 +61,7 @@ public class EmployeeController {
      * @param form 従業員を更新するフォーム
      * @return 従業員一覧画面
      */
+    @PostMapping("/update")
     public String update(UpdateEmployeeForm form){
         //更新対象の従業員を取得
         int employeeId = Integer.parseInt(form.getId());
@@ -72,6 +74,6 @@ public class EmployeeController {
         //更新
         employeeService.update(employee);
 
-        return "/employee/showList";
+        return "redirect:/employee/showList";
     }
 }
