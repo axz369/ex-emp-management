@@ -53,7 +53,7 @@ public class AdministratorRepository {
 
 
     /**
-     * メールアドレスとパスワードから管理者情報を検索を取得する.
+     * ログイン処理をする.
      *
      * @param mailAddress 検索したいメールアドレスの値
      * @param password 検索したいパスワードの値
