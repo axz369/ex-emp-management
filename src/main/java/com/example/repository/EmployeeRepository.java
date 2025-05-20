@@ -1,10 +1,12 @@
 package com.example.repository;
 
-import com.example.domain.Administrator;
 import com.example.domain.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -51,5 +53,56 @@ public class EmployeeRepository {
 
         List<Employee> employeeList = template.query(sql,EMPLOYEE_ROW_MAPPER);
         return employeeList;
+    }
+
+
+    /**
+     * 主キーから従業員を取得する.
+     *
+     * @param id 検索したい主キーの値
+     * @return 従業員一覧(従業員が存在しない場合はSpringが自動的に例外を発生させる)
+     */
+    public Employee findById(Integer id) {
+        String sql = "SELECT " +
+                        "id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count " +
+                        "FROM employees " +
+                        "WHERE id = :id " +
+                        ";";
+
+        SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+
+        Employee employee = template.queryForObject(sql,param,EMPLOYEE_ROW_MAPPER);
+        return employee;
+    }
+
+    
+
+    /**
+     * 従業員情報を更新.
+     *
+     * @param employee 従業員情報
+     * @return void
+     */
+    public Employee update(Employee employee) {
+        SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
+
+        String sql = "UPDATE employees " +
+                "SET " +
+                " id = :id " +
+                ",name = :name " +
+                ",image = :image " +
+                ",gender = :gender " +
+                ",hire_date = :hireDate " +
+                ",mail_address = mailAddress " +
+                ",zip_code = :zipCode " +
+                ",address = :address " +
+                ",telephone = :telephone " +
+                ",salary = salary " +
+                ",characteristics = :characteristics " +
+                ",dependents_count = :dependentsCount " +
+                "WHERE id = :id;";
+
+        template.update(sql,param);
+        return employee;
     }
 }
