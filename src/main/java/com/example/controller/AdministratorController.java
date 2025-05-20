@@ -78,13 +78,14 @@ public class AdministratorController {
      * @param form ログインのフォームオブジェクト
      * @return 従業員一覧画面
      */
+    @PostMapping("/login")
     public String login(LoginForm form, Model model){
 
         //メールとパスワードをもとに管理者を取得
         Administrator administrator = administratorService.login(form.getMailAddress(), form.getPassword());
 
         if(administrator == null){
-            model.addAttribute("loginFailureMessage", "メールアドレスまたはパスワードが不正です");
+            model.addAttribute("loginFailureMessage", "メールアドレスまたはパスワードが不正です。");
             return "administrator/login";
         }
 
