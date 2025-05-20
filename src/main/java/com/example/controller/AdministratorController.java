@@ -93,4 +93,17 @@ public class AdministratorController {
         session.setAttribute("administratorName", administrator.getName());
         return "redirect:employee/showList";
     }
+
+
+    /**
+     * ログアウトをする.
+     *
+     * @param form ログインのフォーム
+     * @return ログイン画面
+     */
+    @GetMapping("/logout")
+    public String logout(LoginForm form){
+        session.invalidate();
+        return "redirect:/";
+    }
 }

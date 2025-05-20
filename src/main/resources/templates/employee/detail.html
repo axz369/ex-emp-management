@@ -62,7 +62,10 @@
               <span th:text="${session.administratorName + 'さん'}"
                 >山田さん</span
               >こんにちは！ &nbsp;&nbsp;&nbsp;
-              <a href="../administrator/login.html" class="navbar-link"
+              <a
+                href="../administrator/login.html"
+                class="navbar-link"
+                th:href="@{/logout}"
                 >ログアウト</a
               >
             </p>
@@ -108,14 +111,7 @@
                   <tr>
                     <th nowrap>写真</th>
                     <td>
-                      <img
-                        th:if="${employee.gender == '男性'}"
-                        th:src="@{/img/e1.png}"
-                      />
-                      <img
-                        th:unless="${employee.gender == '男性'}"
-                        th:src="@{/img/e2.png}"
-                      />
+                      <img th:src="@{/img/e1.png}" />
                     </td>
                   </tr>
                   <tr>
