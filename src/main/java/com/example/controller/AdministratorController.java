@@ -25,7 +25,8 @@ public class AdministratorController {
 
     /**
      * 管理者の情報を登録する画面に遷移する.
-     * @param form 管理者情報を入力するためのInsertAdministratorFormクラス
+     *
+     * @param form 管理者情報を入力するためのフォーム
      * @return 管理者登録画面
      */
     @GetMapping("/toInsert")
@@ -36,8 +37,9 @@ public class AdministratorController {
 
     /**
      * 管理者情報を登録する.
-     * @param form 管理者情報を入力するInsertAdministratorForm
-     * @return ログイン画面に遷移
+     *
+     * @param form 管理者情報を入力するフォーム
+     * @return ログイン画面
      */
     @PostMapping("/insert")
     public String insert(InsertAdministratorForm form){
@@ -56,7 +58,8 @@ public class AdministratorController {
 
 
     /**
-     * ログイン画面に遷移する
+     * ログイン画面に遷移する.
+     *
      * @param form ログイン画面のフォーム
      * @return ログイン画面
      */
