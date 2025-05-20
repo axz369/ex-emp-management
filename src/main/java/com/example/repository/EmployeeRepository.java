@@ -51,8 +51,7 @@ public class EmployeeRepository {
                         "ORDER BY hire_date desc " +
                         ";";
 
-        List<Employee> employeeList = template.query(sql,EMPLOYEE_ROW_MAPPER);
-        return employeeList;
+        return template.query(sql,EMPLOYEE_ROW_MAPPER);
     }
 
 
@@ -60,7 +59,7 @@ public class EmployeeRepository {
      * 主キーから従業員を取得する.
      *
      * @param id 検索したい主キーの値
-     * @return 従業員一覧(従業員が存在しない場合はSpringが自動的に例外を発生させる)
+     * @return 従業員情報(従業員が存在しない場合はSpringが自動的に例外を発生させる)
      */
     public Employee findById(Integer id) {
         String sql = "SELECT " +
@@ -71,36 +70,38 @@ public class EmployeeRepository {
 
         SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 
-        Employee employee = template.queryForObject(sql,param,EMPLOYEE_ROW_MAPPER);
-        return employee;
+        return template.queryForObject(sql,param,EMPLOYEE_ROW_MAPPER);
     }
 
-    
+
 
     /**
      * 従業員情報を更新.
      *
      * @param employee 従業員情報
-     * @return void
+     * @return 更新された従業員情報
      */
     public Employee update(Employee employee) {
         SqlParameterSource param = new BeanPropertySqlParameterSource(employee);
 
-        String sql = "UPDATE employees " +
-                "SET " +
-                " id = :id " +
-                ",name = :name " +
-                ",image = :image " +
-                ",gender = :gender " +
-                ",hire_date = :hireDate " +
-                ",mail_address = mailAddress " +
-                ",zip_code = :zipCode " +
-                ",address = :address " +
-                ",telephone = :telephone " +
-                ",salary = salary " +
-                ",characteristics = :characteristics " +
-                ",dependents_count = :dependentsCount " +
-                "WHERE id = :id;";
+        String sql= """
+                UPDATE employees
+                SET
+                 id = :id
+                 ,name = :name
+                 ,image = :image
+                 ,gender = :gender
+                 ,hire_date = :hireDate
+                 ,mail_address = mailAddress
+                 ,zip_code = :zipCode
+                 ,address = :address
+                 ,telephone = :telephone
+                 ,salary = salary
+                 ,characteristics = :characteristics
+                 ,dependents_count = :dependentsCount
+                 WHERE id = :id
+                 ;
+                """;
 
         template.update(sql,param);
         return employee;

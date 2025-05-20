@@ -1,5 +1,8 @@
 package com.example.domain;
 
+/**
+ * 管理者情報を表すドメインクラス.
+ */
 public class Administrator {
     /** 管理者id */
     private Integer id;

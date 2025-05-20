@@ -2,6 +2,9 @@ package com.example.domain;
 
 import java.util.Date;
 
+/**
+ * 従業員情報を表すドメインクラス.
+ */
 public class Employee {
     /** 従業員ID */
     private Integer id;

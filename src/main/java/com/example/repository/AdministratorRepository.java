@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * administratorsテーブルを操作するリポジトリクラス.
+ */
 @Repository
 public class AdministratorRepository {
 
@@ -34,7 +37,6 @@ public class AdministratorRepository {
      * 管理者情報を挿入する.
      *
      * @param administrator 管理者情報
-     * @return void
      */
     public void insert(Administrator administrator) {
         SqlParameterSource param = new BeanPropertySqlParameterSource(administrator);
@@ -72,6 +74,6 @@ public class AdministratorRepository {
             return null;
         }
 
-        return administratorList.get(0);
+        return administratorList.getFirst();
     }
 }
