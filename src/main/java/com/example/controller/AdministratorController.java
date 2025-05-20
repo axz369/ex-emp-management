@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 管理者のコントローラ.
+ * 管理者関連機能の制御を行うコントローラ.
  */
 @Controller
 @RequestMapping("/")
