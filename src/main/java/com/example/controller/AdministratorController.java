@@ -42,6 +42,9 @@ public class AdministratorController {
         //formオブジェクトの中身をadministratorオブジェクトにコピー
         BeanUtils.copyProperties(form, administrator);
 
+
+        System.out.println(form.getName());
+
         //登録処理
         administratorService.insert(administrator);
 
