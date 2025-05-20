@@ -53,4 +53,25 @@ public class EmployeeController {
 
         return "employee/detail";
     }
+
+    /**
+     * 従業員詳細(扶養人数人数のみ)を更新する.
+     *
+     * @param form 従業員を更新するフォーム
+     * @return 従業員一覧画面
+     */
+    public String update(UpdateEmployeeForm form){
+        //更新対象の従業員を取得
+        int employeeId = Integer.parseInt(form.getId());
+        Employee employee = employeeService.showDetail(employeeId);
+
+        //扶養人数の情報をセット
+        int dependentsCount = Integer.parseInt(form.getDependentsCount());
+        employee.setDependentsCount(dependentsCount);
+
+        //更新
+        employeeService.update(employee);
+
+        return "/employee/showList";
+    }
 }
