@@ -24,7 +24,7 @@ public class EmployeeController {
     /**
      * 従業員一覧を出力する.
      *
-     * @param model リクエストスコープ
+     * @param model リクエストパラメータ
      * @return 従業員一覧画面
      */
     @GetMapping("/showList")
@@ -32,7 +32,7 @@ public class EmployeeController {
         List<Employee> employeeList = employeeService.showList();
         model.addAttribute("employeeList", employeeList);
 
-        return "employee/list.html";
+        return "employee/list";
     }
 
 
@@ -44,6 +44,7 @@ public class EmployeeController {
      * @param form 従業員のフォーム
      * @return 従業員の詳細画面
      */
+    @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form){
         int employeeId = Integer.parseInt(id);
         Employee employee = employeeService.showDetail(employeeId);

@@ -25,7 +25,6 @@ public class EmployeeService {
      * @return 取得した全従業員のリスト
      */
     public List<Employee> showList(){
-        //検索した従業員一覧を返却
         return employeeRepository.findAll();
     }
 
