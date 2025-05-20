@@ -40,7 +40,7 @@ public class EmployeeController {
      * 従業員の詳細を取得する.
      *
      * @param id 従業員id
-     * @param model リクエストスコープ
+     * @param model リクエストパラメータ
      * @param form 従業員のフォーム
      * @return 従業員の詳細画面
      */
